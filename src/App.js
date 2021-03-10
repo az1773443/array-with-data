@@ -1,9 +1,14 @@
 import List from './list'
 
 function App() {
+  const listFilter = List.filter(item => {
+    if(item.userId % 2 !==0){
+      return item;
+    }
+  })
   return (
     <div>
-      {List.map(item => (
+      {listFilter.map(item => (
         <li key={item.id}>
           <h3>
             {item.title}
