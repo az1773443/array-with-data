@@ -1,11 +1,14 @@
 import List from './list'
 
 function App() {
-  const listFilter = List.filter(item => {
-    if(item.userId % 2 !==0){
-      return item;
-    }
-  })
+  const listFilter = List.filter(item => item.userId % 2 !==0)
+    .sort((a, b) => b.userId - a.userId)
+    .map((item) => {
+      const [ first ] = item.title.split(' ');
+      const body5 = item.body.split(' ',5).join();
+  
+      return { ...item, title: first, body: body5};
+    })
   return (
     <div>
       {listFilter.map(item => (
