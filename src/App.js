@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import List from './list'
 
 function App() {
+  const listFilter = List.filter(item => item.userId % 2 !==0)
+    .sort((a, b) => b.userId - a.userId)
+    .map((item) => {
+      const [ first ] = item.title.split(' ');
+      const body5 = item.body.split(' ',5).join();
+  
+      return { ...item, title: first, body: body5};
+    })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {listFilter.map(item => (
+        <li key={item.id}>
+          <h3>
+            {item.title}
+          </h3>
+          <p>
+            {item.body}
+          </p>
+        </li>
+      ))}
     </div>
   );
 }
