@@ -1,6 +1,7 @@
 import List from './list'
-
+import api from './api'
 function App() {
+  api.getList()
   const listFilter = List.filter(item => item.userId % 2 !==0)
     .sort((a, b) => b.userId - a.userId)
     .map((item) => {
