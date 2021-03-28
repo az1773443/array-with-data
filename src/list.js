@@ -1,9 +1,9 @@
 import React from 'react'
-import Details from './details'
-function List() {
+import setDetils from './App'
+function List(props) {
     const [list, setList] = React.useState([]);
     const [error, setError] = React.useState('');
-    const [detailsId, setDetils] = React.useState();
+    // const [detailsId, setDetils] = React.useState();
     const api = {
         getList: () => {
             return fetch('https://jsonplaceholder.typicode.com/posts')
@@ -33,11 +33,10 @@ function List() {
         <div>
             <div>{error}</div>
             {list.map(item => (
-            <li key={item.id} onClick={() => setDetils(item.id)}>
+            <li key={item.id} onClick={() => props.setDetils(item.id)}>
               {item.title}
             </li>
             ))}
-            <Details detailsId={detailsId} />
         </div>
 
     )

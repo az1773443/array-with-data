@@ -1,11 +1,13 @@
 import React from 'react'
 import List from './list'
+import Details from './details'
 
 function App() {
-
+  const [detailsId, setDetils] = React.useState();
     return (
       <div>
-        <List />
+        <List setDetils={setDetils}/>
+        <Details id={detailsId}/>
       </div>
   );
 }

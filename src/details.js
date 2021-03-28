@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Details () {
+function Details (props) {
     const [details, setDetils] = React.useState([]);
-
+    
     const api = {
         getDetails: () => {
-            return fetch("https://jsonplaceholder.typicode.com/posts/1")
+            return fetch(`https://jsonplaceholder.typicode.com/posts/${props.id}`)
                 .then(response => response.json())
         }
 
@@ -13,12 +13,13 @@ function Details () {
 
     React.useEffect(() => {
         api.getDetails().then((data) => {
+        
         const detailsList = [];
         detailsList.push(data);
         
         setDetils(detailsList);
         })
-    }, [details]);
+    }, [props.id]);
 
     return (
         <div>
