@@ -1,8 +1,12 @@
+const API_URL = 'https://jsonplaceholder.typicode.com'
+
 const api = {
     getList: () => {
-        return fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-    }
+        return fetch(`${API_URL}/posts`).then((response) => response.json())
+    },
+    getDetails: ({id}) => {
+            return fetch(`${API_URL}/posts/${id}`).then((response) => response.json())
+        },
 
 }
 

@@ -1,18 +1,11 @@
 import React from 'react'
+import api from "./api";
 
 function Details ({id}) {
     const [details, setDetils] = React.useState([]);
     
-    const api = {
-        getDetails: () => {
-            return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-                .then(response => response.json())
-        }
-
-    }
-
     React.useEffect(() => {
-        api.getDetails().then((data) => {
+        api.getDetails({id}).then((data) => {
         
         const detailsList = [];
         detailsList.push(data);
