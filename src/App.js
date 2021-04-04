@@ -1,15 +1,27 @@
 import React from 'react'
-import List from './list'
-import Details from './details'
+import List from './listClasses'
+import Details from './detailsClasses'
 
-function App() {
-  const [detailsId, setDetils] = React.useState();
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+        id: null,
+    }
+    this.handlePostClick = this.handlePostClick.bind(this);
+  }
+
+  handlePostClick (item) {
+    this.setState({ id:item.id });
+  }
+
+  render(){
     return (
       <>
-        <List setDetils={setDetils}/>
-        <Details id={detailsId}/>
+        <List handlePostClick={this.handlePostClick}/>
+        <Details id={this.state.id}/>
       </>
-  );
+    );
+  }
 }
-
 export default App;
