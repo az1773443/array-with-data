@@ -5,7 +5,7 @@ function Details ({id}) {
     const [details, setDetils] = React.useState([]);
     
     React.useEffect(() => {
-        api.getDetails({id}).then((data) => {
+        api.getDetails(id).then((data) => {
         
         const detailsList = [];
         detailsList.push(data);

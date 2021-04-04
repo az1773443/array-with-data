@@ -4,9 +4,10 @@ const api = {
     getList: () => {
         return fetch(`${API_URL}/posts`).then((response) => response.json())
     },
-    getDetails: ({id}) => {
+    getDetails: (id) => {
+        console.log(`Api - ${id}`);
             return fetch(`${API_URL}/posts/${id}`).then((response) => response.json())
-        },
+    },
 
 }
 
